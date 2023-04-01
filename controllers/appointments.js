@@ -56,7 +56,10 @@ function edit(req,res) {
         if(dobMonth < 10){
             dobMonth = `0${dobMonth}`
         }
-        const dobDay = foundAppointment.dob.getDate()
+        let dobDay = foundAppointment.dob.getDate()
+        if(dobDay < 10){
+            dobDay = `0${dobDay}`
+        }
         const dob = `${dobYear}-${dobMonth}-${dobDay}`;
         
         const dateYear = foundAppointment.date.getFullYear()
