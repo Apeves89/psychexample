@@ -7,6 +7,7 @@ const session = require('express-session');
 const passport = require('passport');
 const methodOverride = require('method-override');
 require('dotenv').config();
+const MongoStore = require('connect-mongo');
 
 var homeRouter = require('./routes/home');
 var appsRouter = require('./routes/appointments');
@@ -23,6 +24,9 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
 app.use(session({
+  store: MongoStore.create({
+    mongoUrl: process.env.DATABASE_URL
+  }),
   secret: process.env.SECRET,
   resave: false,
   saveUninitialized: true
