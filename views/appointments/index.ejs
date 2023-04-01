@@ -1,0 +1,48 @@
+
+
+<%- include('../partials/header') %>
+
+<main>
+    <h1>Upcoming Appointments</h1><br>
+    <% if (appointments.length>0) {%>
+    <table>
+      <thead> 
+        <tr>
+          <th>Name</th>
+          <th>DOB</th>
+          <th>Location</th>
+          <th>Appointment Date</th>
+          <th></th>
+          <th></th>
+        </tr>
+      </thead>
+        <tbody>
+            <!-- Write the line of EJS to iterate over flights using forEach -->
+            <% appointments.forEach(a => { %>
+              <tr>
+                
+                <td><%= a.name %></td>
+                <td><%= a.dob.toLocaleDateString() %></td>
+                <td><%= a.location %></td>
+                <td><%= a.date.toLocaleString() %></td>
+
+
+              <td><a href="/appointments/<%= a._id %>"> Details </a></td>
+             
+                    <td>
+        
+                        <form action="/appointments/<%= a._id %>?_method=DELETE" method="POST">
+                          <button type="submit">CANCEL</button>
+                        </form>
+           
+                    </td>
+           
+                  </tr>
+            <!-- Close the forEach using EJS here -->
+            <% }) %>
+          </tbody>
+    </table>
+<% } %>
+  </main>
+  
+    <%- include('../partials/footer') %>

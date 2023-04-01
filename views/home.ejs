@@ -1,0 +1,35 @@
+
+<%- include('./partials/header') %>
+
+<main>
+
+<h1>Psychiatry Services Clinic</h1> <br>
+
+    <h3> 
+    Providing a variety of services such as medication management, 
+    individual and group therapy, acupuncture, and massage therapy. 
+    </h3><br>
+    
+    <h3>
+    Our team is comprised of psychiatrists, therapists, and other professionals. 
+    We offer tele-appointments and in-person sessions. 
+    </h3><br>
+
+    <h3><br>
+    We approach our patients in a holistic fashion,
+    incorporating exercise and mindfulness into our core strategy. 
+    We aim to build relationships with our clients to help 
+    them change their life and seek their ideal state of mental well-being. </h3>
+    </h3> <br>
+
+<nav>
+<% if (user) { %>
+    <a href="/appointments/new">Schedule an appointment today! </a> <br> 
+     
+   <% } %>
+</nav>
+
+</main>
+
+
+<%- include('./partials/footer') %>

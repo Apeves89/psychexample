@@ -1,0 +1,20 @@
+<%- include('../partials/header') %>
+
+
+<main>
+
+<h1>Appointment Details</h1><br>
+  
+<div>Name: <%=appointment.name %></div>
+
+<div>Date of Birth: <%=appointment.dob.toLocaleDateString() %></div>
+
+<div>Location: <%=appointment.location %></div>
+
+<div>Appointment Date & Time: <%=appointment.date.toLocaleString() %> </div><br>
+
+<a href="/appointments/<%= appointment._id %>/edit"> Change Appointment </a>
+</main>
+
+
+<%- include('../partials/footer') %>

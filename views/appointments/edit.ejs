@@ -1,0 +1,51 @@
+<%- include('../partials/header') %>
+
+
+<main>
+    <h1>Edit Appointment</h1><br>
+
+
+    <div>Name: <%=appointment.name %></div>
+
+    <div>Date of Birth: <%=appointment.dob.toLocaleDateString() %></div>
+
+    <div>Location: <%=appointment.location %></div>
+
+    <div>Appointment Date & Time: <%=appointment.date.toLocaleString() %> </div><br>
+
+    <form action="/appointments/<%= appointment._id %>?_method=PUT" method="POST">
+    <label> Name: </label>
+    <input type="text" value="<%=appointment.name  %>" name="name" placeholder=" FirstName LastName" required><br>
+
+    <label>Date of Birth:</label>
+    <input type="date" value="<%=dob %>" name="dob" min="1923-01-01" required><br>
+    <!-- /*We need to come back to this to only allow 18+ to book/ populate a message*/ -->
+
+    <label>Location:</label>
+    <select name="location" required>
+        <option value="" disabled selected hidden>Select Philadelphia Locations</option> 
+        <option value="Passyunk" <% if(appointment.location === "Passyunk") {%>
+        selected
+        <% } %>
+        >Passyunk</option>
+        <option value="Fishtown" <% if(appointment.location === "Fishtown") {%>
+            selected
+            <% } %>>Fishtown</option>
+        <option value="Center City" <% if(appointment.location === "Center City") {%>
+            selected
+            <% } %>>Center City</option>
+        <option value="Manayunk" <% if(appointment.location === "Manayunk") {%>
+            selected
+            <% } %>>Manayunk</option>
+    </select><br>
+
+    <label>Appointment Date</label>
+    <input type="datetime-local"  name="date" required><br>
+
+    <input type="submit" value="Create Appointment">
+    </form>
+
+</main>
+
+
+<%- include('../partials/footer') %>
