@@ -13,8 +13,43 @@
 
 <div>Appointment Date & Time: <%=appointment.date.toLocaleString() %> </div><br>
 
-<a href="/appointments/<%= appointment._id %>/edit"> Change Appointment </a>
+<% if (appointment.provider){ %>
+    <h3>Provider</h3>
+    <div><%= appointment.provider.provider%></div>
+    <div><%= appointment.provider.insurance%></div><br>
+    <% } %>
+
+<a href="/appointments/<%= appointment._id %>/edit"> Change Appointment </a><br><br>
+<a  class="add-provider" id="addProvider" >Add/Change Provider</a>
+
+<div id="pfo" class="provider-form-overlay">
+    <form class="provider-form" id="providerForm" method="POST" action="/provider/<%= appointment._id %>?_method=PUT"> 
+        <label>Provider</label>
+        <select name="provider">
+            <option value="" disabled selected hidden>Select</option> 
+            <option value="Eduardo Hernandez, MD">Eduardo Hernandez, MD</option>
+            <option value="Jessica Parlor, D.O.">Jessica Parlor, D.O.</option>
+            <option value="Skye James, P.A.">Skye James, P.A.</option>
+            <option value="Alejando Clayton, N.P.">Alejandro Clayton, N.P.</option>
+            <option value="Cynthia Boyd, MD">Cynthia Boyd, MD</option>
+            <option value="Snow Winters, N.P">Snow Winters, N.P.</option>
+        </select><br>
+        
+        
+        
+        <label>Insurance</label>
+        <select name="insurance">
+            <option value="" disabled selected hidden>Select</option> 
+            <option value="BlueCross">BlueCross</option>
+            <option value="Medicare">Medicare</option>
+            <option value="Aetna">Aetna</option>
+        </select><br>
+        
+            <button type="submit">SUBMIT CHANGES</button>
+        
+    </form>
+</div>
 </main>
 
-
+<script src="/javascripts/app.js"></script>
 <%- include('../partials/footer') %>

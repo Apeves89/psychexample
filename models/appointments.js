@@ -1,5 +1,18 @@
 const mongoose = require("mongoose");
 
+const providerSchema = new mongoose.Schema({
+    provider: {
+        type: String,
+        enum: ['Eduardo Hernandez, MD', 'Jessica Parlor, D.O.', 'Skye James, P.A.',
+    'Alejando Clayton, N.P.', 'Cynthia Boyd, MD', 'Snow Winters, N.P']
+    },
+    insurance: {
+        type: String,
+        enum: ['BlueCross', 'Medicare', 'Aetna']
+    },
+    userId: {type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true}
+})
+
 const appointmentSchema = new mongoose.Schema({
     name: {
         type: String, 
@@ -21,6 +34,8 @@ const appointmentSchema = new mongoose.Schema({
     },
     required: true
     },
+    provider:providerSchema,
+    
     userId: {type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true}
 });
 
