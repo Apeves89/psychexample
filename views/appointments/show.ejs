@@ -30,7 +30,7 @@
 <div id="pfo" class="provider-form-overlay">
     <form class="provider-form" id="providerForm" method="POST" action="/provider/<%= appointment._id %>?_method=PUT"> 
         <label>Provider</label>
-        <select name="provider">
+        <select name="provider" required>
             <option value="" disabled selected hidden>Select</option> 
             <option value="Eduardo Hernandez, MD">Eduardo Hernandez, MD</option>
             <option value="Jessica Parlor, D.O.">Jessica Parlor, D.O.</option>
@@ -43,7 +43,7 @@
         
         
         <label>Insurance</label>
-        <select name="insurance">
+        <select name="insurance" required>
             <option value="" disabled selected hidden>Select</option> 
             <option value="BlueCross">BlueCross</option>
             <option value="Medicare">Medicare</option>
