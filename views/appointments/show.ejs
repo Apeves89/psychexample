@@ -11,16 +11,21 @@
 
 <div>Location: <%=appointment.location %></div>
 
-<div>Appointment Date & Time: <%=appointment.date.toLocaleString() %> </div><br>
+<div>Appointment Date & Time: <%=appointment.date.toLocaleString() %> </div>
 
 <% if (appointment.provider){ %>
     <h3>Provider</h3>
     <div><%= appointment.provider.provider%></div>
-    <div><%= appointment.provider.insurance%></div><br>
-    <% } %>
-
+    <div><%= appointment.provider.insurance%></div>
+<% } %>
+<br>
 <a href="/appointments/<%= appointment._id %>/edit"> Change Appointment </a><br><br>
-<a  class="add-provider" id="addProvider" >Add/Change Provider</a>
+
+<% if (appointment.provider){ %>
+    <a  class="add-provider" id="addProvider" >Change Provider</a>
+<% }else{ %>
+    <a  class="add-provider" id="addProvider" >Add Provider</a>
+<% } %>
 
 <div id="pfo" class="provider-form-overlay">
     <form class="provider-form" id="providerForm" method="POST" action="/provider/<%= appointment._id %>?_method=PUT"> 
@@ -44,10 +49,14 @@
             <option value="Medicare">Medicare</option>
             <option value="Aetna">Aetna</option>
         </select><br>
-        
-            <button type="submit">SUBMIT CHANGES</button>
-        
-    </form>
+        <% if (appointment.provider){ %>
+            <button type="submit">Change Provider</button>
+        <% }else{ %>
+            <button type="submit">Add Provider</button>
+        <% } %>
+            <button id="cancel-provider" type="button">Cancel</button>
+            
+        </form>
 </div>
 </main>
 

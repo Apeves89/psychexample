@@ -8,5 +8,5 @@ function closeModal(){
 const btn = document.getElementById('addProvider')
 btn.addEventListener('click',openModal)
 
-const form = document.getElementById('providerForm')
-// form.addEventListener('submit', closeModal)
+const form = document.getElementById('cancel-provider')
+form.addEventListener('click', closeModal)
